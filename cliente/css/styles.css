@@ -1,0 +1,77 @@
+/* Lumina Academy - Estilos principais */
+
+/* Configuração do Tailwind */
+@import url('https://cdn.tailwindcss.com');
+
+/* Cores personalizadas */
+:root {
+    --primary: #5A67D8;
+    --secondary: #F6AD55;
+    --highlight: #FCD34D;
+    --text-primary: #2D3748;
+    --text-secondary: #4A5568;
+    --bg-light: #F7FAFC;
+    --bg-dark: #1A202C;
+    --success: #48BB78;
+    --error: #F56565;
+    --info: #4299E1;
+    --neutral: #E2E8F0;
+}
+
+/* Estilos personalizados */
+.chart-bar {
+    border-radius: 4px 4px 0 0;
+    transition: all 0.3s ease;
+}
+
+.chart-container {
+    height: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.activity-checkbox:checked + label {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Animações de progresso */
+.progress-bar {
+    transition: width 0.6s ease-in-out;
+}
+
+/* Scrollbar personalizada */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hover effects para task items */
+.task-item:hover .task-actions {
+    opacity: 1;
+}
+
+.task-actions {
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Shadow para header fixo */
+.header-shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animações para cards */
+.hover-card {
+    transition: all 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Lumina Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#1E40AF',
+                        textPrimary: '#1F2937',
+                        textSecondary: '#6B7280',
+                        neutral: '#E5E7EB',
+                        error: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        
+        .input-field:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .social-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-container {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.5s ease;
+        }
+        
+        .form-container.hidden {
+            opacity: 0;
+            transform: translateX(20px);
+            pointer-events: none;
+        }
+        
+        .border-error {
+            border-color: #EF4444 !important;
+        }
+        
+        .error-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .shape:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: -2s;
+        }
+        
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Container Principal -->
+    <div class="min-h-screen flex">
+        <!-- Lado Esquerdo - Institucional -->
+        <div class="flex-1 relative bg-gradient-to-br from-primary to-secondary hidden lg:flex">
+            <!-- Formas Flutuantes -->
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            
+            <!-- Conteúdo Institucional -->
+            <div class="relative z-10 flex flex-col justify-between h-full p-12 text-white">
+                <!-- Header -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                    </div>
+                    <span class="text-2xl font-bold">Lumina Academy</span>
+                </div>
+                
+                <!-- Conteúdo Central -->
+                <div class="space-y-8">
+                    <!-- Chamada Principal -->
+                    <div class="space-y-6">
+                        <h1 class="text-3xl md:text-4xl font-bold mb-6">Comece sua jornada de aprendizado hoje</h1>
+                        <p class="text-white/80 mb-8">Acesse milhares de cursos online ministrados por especialistas e desenvolva habilidades que impulsionarão sua carreira.</p>
+                    </div>
+                    
+                    <!-- Benefícios -->
+                    <div class="hidden md:block">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-white/20 p-2 rounded-full mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Mais de 5.000 cursos</h3>
+                                <p class="text-sm text-white/70">Em diversas áreas de conhecimento</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center mb-6">
+                            <div class="bg-white/20 p-2 rounded-full mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.0 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Certificados reconhecidos</h3>
+                                <p class="text-sm text-white/70">Valorize seu currículo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-white/20 p-2 rounded-full mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Aprenda no seu ritmo</h3>
+                                <p class="text-sm text-white/70">Acesso vitalício aos cursos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block mt-12">
+                    <p class="text-sm text-white/70">© 2023 Lumina Academy. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lado Direito - Formulários -->
+        <div class="w-full md:w-7/12 p-8 md:p-12">
+            <div class="max-w-md mx-auto">
+                <!-- Login Form -->
+                <div id="loginForm" class="form-container">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-textPrimary">Bem-vindo de volta!</h2>
+                        <p class="text-textSecondary">Entre na sua conta para continuar</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <label for="login-email" class="block text-sm font-medium text-textSecondary mb-1">Email</label>
+                            <input type="email" id="login-email" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="seu@email.com">
+                            <p id="login-email-error" class="hidden text-error text-sm mt-1">Por favor, insira um email válido.</p>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <label for="login-password" class="block text-sm font-medium text-textSecondary">Senha</label>
+                                <a href="#" class="text-sm text-primary hover:underline">Esqueceu a senha?</a>
+                            </div>
+                            <input type="password" id="login-password" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="••••••••">
+                            <p id="login-password-error" class="hidden text-error text-sm mt-1">Por favor, insira sua senha.</p>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="remember-me" class="w-4 h-4 text-primary border-neutral rounded focus:ring-primary">
+                            <label for="remember-me" class="ml-2 text-sm text-textSecondary">Lembrar de mim</label>
+                        </div>
+                    </div>
+                    
+                    <button id="loginButton" class="btn-primary w-full py-3 rounded-lg text-white font-medium mb-4">Entrar</button>
+                    
+                    <div class="relative flex items-center justify-center mb-6">
+                        <div class="flex-grow border-t border-neutral"></div>
+                        <span class="flex-shrink mx-4 text-sm text-textSecondary">ou continue com</span>
+                        <div class="flex-grow border-t border-neutral"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-3 mb-8">
+                        <button class="social-btn flex justify-center items-center py-2 border border-neutral rounded-lg hover:bg-neutral/10">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z" fill="#4285F4"/>
+                                <path d="M4.17 14.987l3.089-2.324a4.986 4.986 0 0 1-.628-2.458c0-.86.22-1.67.628-2.38l-3.089-2.325a8.968 8.968 0 0 0-1.226 4.705c0 1.714.446 3.33 1.226 4.782z" fill="#34A853"/>
+                                <path d="M12.207 4.598a5.018 5.018 0 0 1 3.551 1.307l2.6-2.599a8.891 8.891 0 0 0-6.151-2.412c-3.35 0-6.26 1.901-7.68 4.786l3.089 2.324a4.94 4.94 0 0 1 4.591-3.406z" fill="#FBBC05"/>
+                                <path d="M12.207 19.782c2.273 0 4.22-.755 5.667-2.026l-2.853-2.168c-.826.64-1.892 1.017-2.814 1.017-2.468 0-4.336-1.26-4.792-3.453l-3.114 2.396c1.42 2.884 4.321 4.234 7.906 4.234z" fill="#EA4335"/>
+                            </svg>
+                        </button>
+                        <button class="social-btn flex justify-center items-center py-2 border border-neutral rounded-lg hover:bg-neutral/10">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+                            </svg>
+                        </button>
+                        <button class="social-btn flex justify-center items-center py-2 border border-neutral rounded-lg hover:bg-neutral/10">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="black"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="text-textSecondary">
+                            Não tem uma conta? 
+                            <button id="showRegisterBtn" class="form-switch text-primary font-medium hover:underline">Cadastre-se</button>
+                        </p>
+                    </div>
+                    
+                    <!-- Back to home -->
+                    <div class="mt-4 text-center">
+                        <a href="../index.html" class="text-sm text-gray-500 hover:text-gray-700 transition-colors flex items-center justify-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Voltar ao início
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Register Form -->
+                <div id="registerForm" class="form-container hidden">
+                    <div class="text-center mb-8">
+                        <h2 class="text-2xl font-bold text-textPrimary">Crie sua conta</h2>
+                        <p class="text-textSecondary">Comece sua jornada de aprendizado</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="register-firstname" class="block text-sm font-medium text-textSecondary mb-1">Nome</label>
+                                <input type="text" id="register-firstname" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="Maria">
+                                <p id="register-firstname-error" class="hidden text-error text-sm mt-1">Por favor, insira seu nome.</p>
+                            </div>
+                            <div>
+                                <label for="register-lastname" class="block text-sm font-medium text-textSecondary mb-1">Sobrenome</label>
+                                <input type="text" id="register-lastname" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="Silva">
+                                <p id="register-lastname-error" class="hidden text-error text-sm mt-1">Por favor, insira seu sobrenome.</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="register-email" class="block text-sm font-medium text-textSecondary mb-1">Email</label>
+                            <input type="email" id="register-email" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="seu@email.com">
+                            <p id="register-email-error" class="hidden text-error text-sm mt-1">Por favor, insira um email válido.</p>
+                        </div>
+                        
+                        <div>
+                            <label for="register-password" class="block text-sm font-medium text-textSecondary mb-1">Senha</label>
+                            <input type="password" id="register-password" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="••••••••">
+                            
+                            <!-- Indicador de força da senha -->
+                            <div id="password-strength" class="hidden mt-2">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm text-textSecondary">Força da senha:</span>
+                                    <span id="password-strength-text" class="text-sm font-medium"></span>
+                                </div>
+                                <div class="w-full bg-neutral rounded-full h-2">
+                                    <div id="password-strength-bar" class="h-2 rounded-full transition-all duration-300"></div>
+                                </div>
+                                <div id="password-feedback" class="mt-1 text-xs text-textSecondary"></div>
+                            </div>
+                            
+                            <p id="register-password-error" class="hidden text-error text-sm mt-1">A senha deve ter pelo menos 8 caracteres.</p>
+                        </div>
+                        
+                        <div>
+                            <label for="register-confirm-password" class="block text-sm font-medium text-textSecondary mb-1">Confirmar senha</label>
+                            <input type="password" id="register-confirm-password" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="••••••••">
+                            <p id="register-confirm-password-error" class="hidden text-error text-sm mt-1">As senhas não coincidem.</p>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <input type="checkbox" id="terms" class="w-4 h-4 text-primary border-neutral rounded focus:ring-primary">
+                            <label for="terms" class="ml-2 text-sm text-textSecondary">
+                                Eu concordo com os <a href="#" class="text-primary hover:underline">Termos de Serviço</a> e <a href="#" class="text-primary hover:underline">Política de Privacidade</a>
+                            </label>
+                        </div>
+                        <p id="terms-error" class="hidden text-error text-sm mt-1">Você deve concordar com os termos para continuar.</p>
+                    </div>
+                    
+                    <button id="registerButton" class="btn-primary w-full py-3 rounded-lg text-white font-medium mb-4">Criar conta</button>
+                    
+                    <div class="relative flex items-center justify-center mb-6">
+                        <div class="flex-grow border-t border-neutral"></div>
+                        <span class="flex-shrink mx-4 text-sm text-textSecondary">ou cadastre-se com</span>
+                        <div class="flex-grow border-t border-neutral"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-3 mb-8">
+                        <button class="social-btn flex justify-center items-center py-2 border border-neutral rounded-lg hover:bg-neutral/10">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z" fill="#4285F4"/>
+                                <path d="M4.17 14.987l3.089-2.324a4.986 4.986 0 0 1-.628-2.458c0-.86.22-1.67.628-2.38l-3.089-2.325a8.968 8.968 0 0 0-1.226 4.705c0 1.714.446 3.33 1.226 4.782z" fill="#34A853"/>
+                                <path d="M12.207 4.598a5.018 5.018 0 0 1 3.551 1.307l2.6-2.599a8.891 8.891 0 0 0-6.151-2.412c-3.35 0-6.26 1.901-7.68 4.786l3.089 2.324a4.94 4.94 0 0 1 4.591-3.406z" fill="#FBBC05"/>
+                                <path d="M12.207 19.782c2.273 0 4.22-.755 5.667-2.026l-2.853-2.168c-.826.64-1.892 1.017-2.814 1.017-2.468 0-4.336-1.26-4.792-3.453l-3.114 2.396c1.42 2.884 4.321 4.234 7.906 4.234z" fill="#EA4335"/>
+                            </svg>
+                        </button>
+                        <button class="social-btn flex justify-center items-center py-2 border border-neutral rounded-lg hover:bg-neutral/10">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+                            </svg>
+                        </button>
+                        <button class="social-btn flex justify-center items-center py-2 border border-neutral rounded-lg hover:bg-neutral/10">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="black"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="text-center">
+                        <p class="text-textSecondary">
+                            Já tem uma conta? 
+                            <button id="showLoginBtn" class="form-switch text-primary font-medium hover:underline">Entrar</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ===============================
+        // SISTEMA DE LOCALSTORAGE
+        // ===============================
+        
+        // Classe para gerenciar localStorage
+        class StorageManager {
+            static keys = {
+                USER_DATA: 'lumina_user_data',
+                AUTH_TOKEN: 'lumina_auth_token',
+                USER_PREFERENCES: 'lumina_user_preferences',
+                REMEMBER_LOGIN: 'lumina_remember_login',
+                LAST_LOGIN: 'lumina_last_login',
+                FORM_DATA: 'lumina_form_data',
+                ACTIVITY_LOG: 'lumina_activity_log'
+            };
+            
+            // Salvar dados do usuário
+            static saveUserData(userData) {
+                try {
+                    localStorage.setItem(this.keys.USER_DATA, JSON.stringify(userData));
+                    this.logActivity('user_data_saved', 'Dados do usuário salvos');
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao salvar dados do usuário:', error);
+                    return false;
+                }
+            }
+            
+            // Recuperar dados do usuário
+            static getUserData() {
+                try {
+                    const data = localStorage.getItem(this.keys.USER_DATA);
+                    return data ? JSON.parse(data) : null;
+                } catch (error) {
+                    console.error('Erro ao recuperar dados do usuário:', error);
+                    return null;
+                }
+            }
+            
+            // Salvar token de autenticação
+            static saveAuthToken(token, expiresIn = 24 * 60 * 60 * 1000) { // 24 horas por padrão
+                try {
+                    const tokenData = {
+                        token: token,
+                        expires: Date.now() + expiresIn,
+                        created: Date.now()
+                    };
+                    localStorage.setItem(this.keys.AUTH_TOKEN, JSON.stringify(tokenData));
+                    this.logActivity('auth_token_saved', 'Token de autenticação salvo');
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao salvar token:', error);
+                    return false;
+                }
+            }
+            
+            // Verificar se o token é válido
+            static isTokenValid() {
+                try {
+                    const tokenData = localStorage.getItem(this.keys.AUTH_TOKEN);
+                    if (!tokenData) return false;
+                    
+                    const parsed = JSON.parse(tokenData);
+                    return Date.now() < parsed.expires;
+                } catch (error) {
+                    console.error('Erro ao verificar token:', error);
+                    return false;
+                }
+            }
+            
+            // Salvar preferências do usuário
+            static saveUserPreferences(preferences) {
+                try {
+                    const currentPrefs = this.getUserPreferences();
+                    const updatedPrefs = { ...currentPrefs, ...preferences };
+                    localStorage.setItem(this.keys.USER_PREFERENCES, JSON.stringify(updatedPrefs));
+                    this.logActivity('preferences_saved', 'Preferências atualizadas');
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao salvar preferências:', error);
+                    return false;
+                }
+            }
+            
+            // Recuperar preferências do usuário
+            static getUserPreferences() {
+                try {
+                    const data = localStorage.getItem(this.keys.USER_PREFERENCES);
+                    return data ? JSON.parse(data) : {
+                        theme: 'light',
+                        language: 'pt-BR',
+                        notifications: true,
+                        autoSave: true
+                    };
+                } catch (error) {
+                    console.error('Erro ao recuperar preferências:', error);
+                    return {};
+                }
+            }
+            
+            // Salvar dados temporários do formulário
+            static saveFormData(formType, data) {
+                try {
+                    const currentFormData = this.getFormData();
+                    currentFormData[formType] = {
+                        data: data,
+                        timestamp: Date.now()
+                    };
+                    localStorage.setItem(this.keys.FORM_DATA, JSON.stringify(currentFormData));
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao salvar dados do formulário:', error);
+                    return false;
+                }
+            }
+            
+            // Recuperar dados do formulário
+            static getFormData(formType = null) {
+                try {
+                    const data = localStorage.getItem(this.keys.FORM_DATA);
+                    const formData = data ? JSON.parse(data) : {};
+                    
+                    if (formType) {
+                        return formData[formType] || null;
+                    }
+                    return formData;
+                } catch (error) {
+                    console.error('Erro ao recuperar dados do formulário:', error);
+                    return formType ? null : {};
+                }
+            }
+            
+            // Registrar atividade
+            static logActivity(type, description, data = null) {
+                try {
+                    const activities = this.getActivityLog();
+                    const activity = {
+                        id: Date.now(),
+                        type: type,
+                        description: description,
+                        data: data,
+                        timestamp: Date.now(),
+                        date: new Date().toISOString()
+                    };
+                    
+                    activities.unshift(activity);
+                    
+                    // Manter apenas os últimos 50 registros
+                    if (activities.length > 50) {
+                        activities.splice(50);
+                    }
+                    
+                    localStorage.setItem(this.keys.ACTIVITY_LOG, JSON.stringify(activities));
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao registrar atividade:', error);
+                    return false;
+                }
+            }
+            
+            // Recuperar log de atividades
+            static getActivityLog() {
+                try {
+                    const data = localStorage.getItem(this.keys.ACTIVITY_LOG);
+                    return data ? JSON.parse(data) : [];
+                } catch (error) {
+                    console.error('Erro ao recuperar log de atividades:', error);
+                    return [];
+                }
+            }
+            
+            // Limpar todos os dados
+            static clearAllData() {
+                try {
+                    Object.values(this.keys).forEach(key => {
+                        localStorage.removeItem(key);
+                    });
+                    this.logActivity('data_cleared', 'Todos os dados foram limpos');
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao limpar dados:', error);
+                    return false;
+                }
+            }
+            
+            // Fazer logout
+            static logout() {
+                try {
+                    localStorage.removeItem(this.keys.AUTH_TOKEN);
+                    localStorage.removeItem(this.keys.USER_DATA);
+                    localStorage.removeItem(this.keys.FORM_DATA);
+                    this.logActivity('user_logout', 'Usuário fez logout');
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao fazer logout:', error);
+                    return false;
+                }
+            }
+            
+            // Limpar dados de autenticação (similar ao logout mas mais específico)
+            static clearAuthData() {
+                try {
+                    localStorage.removeItem(this.keys.AUTH_TOKEN);
+                    localStorage.removeItem(this.keys.USER_DATA);
+                    this.logActivity('auth_data_cleared', 'Dados de autenticação limpos');
+                    return true;
+                } catch (error) {
+                    console.error('Erro ao limpar dados de autenticação:', error);
+                    return false;
+                }
+            }
+            
+            // Verificar se usuário está logado
+            static isLoggedIn() {
+                return this.isTokenValid() && this.getUserData() !== null;
+            }
+        }
+        
+        // ===============================
+        // INICIALIZAÇÃO E VERIFICAÇÕES
+        // ===============================
+        
+        // Verificar se usuário já está logado ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar se já existe um login ativo
+            if (checkExistingLogin()) {
+                return; // Para aqui se o usuário já está logado
+            }
+            
+            // Recuperar dados do formulário se existirem
+            restoreFormData();
+            
+            // Aplicar preferências salvas
+            applyUserPreferences();
+            
+            // Registrar acesso à página de login
+            StorageManager.logActivity('page_access', 'Acesso à página de login');
+        });
+        
+        // Função para restaurar dados do formulário
+        function restoreFormData() {
+            const loginData = StorageManager.getFormData('login');
+            const registerData = StorageManager.getFormData('register');
+            
+            if (loginData && loginData.data) {
+                const emailField = document.getElementById('login-email');
+                const rememberField = document.getElementById('remember-me');
+                
+                if (emailField && loginData.data.email) {
+                    emailField.value = loginData.data.email;
+                }
+                
+                if (rememberField && loginData.data.remember) {
+                    rememberField.checked = true;
+                }
+            }
+            
+            if (registerData && registerData.data) {
+                const fields = ['register-firstname', 'register-lastname', 'register-email'];
+                fields.forEach(fieldId => {
+                    const field = document.getElementById(fieldId);
+                    const dataKey = fieldId.replace('register-', '');
+                    if (field && registerData.data[dataKey]) {
+                        field.value = registerData.data[dataKey];
+                    }
+                });
+            }
+        }
+        
+        // ===============================
+        // INICIALIZAÇÃO E VERIFICAÇÕES
+        // ===============================
+        
+        // Verificar se usuário já está logado ao carregar a página
+        function checkExistingLogin() {
+            const userData = StorageManager.getUserData();
+            const authToken = StorageManager.getAuthToken();
+            const rememberLogin = localStorage.getItem(StorageManager.keys.REMEMBER_LOGIN) === 'true';
+            
+            if (userData && authToken && rememberLogin) {
+                // Usuário já está logado e escolheu ser lembrado
+                StorageManager.logActivity('auto_login', 'Login automático detectado', { 
+                    email: userData.email,
+                    lastLogin: userData.lastLogin 
+                });
+                
+                showNotification(`Bem-vindo de volta, ${userData.firstName}! Redirecionando...`, 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+                
+                return true;
+            }
+            
+            return false;
+        }
+        
+        // Função para logout (pode ser chamada de outras páginas)
+        function logout(redirectToLogin = true) {
+            const userData = StorageManager.getUserData();
+            
+            if (userData) {
+                StorageManager.logActivity('logout', 'Usuário fez logout', { 
+                    email: userData.email,
+                    sessionDuration: new Date() - new Date(userData.lastLogin)
+                });
+            }
+            
+            // Limpar dados de autenticação
+            StorageManager.clearAuthData();
+            localStorage.removeItem(StorageManager.keys.REMEMBER_LOGIN);
+            
+            showNotification('Logout realizado com sucesso!', 'success');
+            
+            if (redirectToLogin) {
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            }
+        }
+        
+        // Adicionar função global para logout
+        window.luminaLogout = logout;
+        
+        // Função para aplicar preferências do usuário
+        function applyUserPreferences() {
+            const preferences = StorageManager.getUserPreferences();
+            
+            // Aplicar tema se necessário
+            if (preferences.theme === 'dark') {
+                document.body.classList.add('dark');
+            }
+            
+            // Outras preferências podem ser aplicadas aqui
+        }
+        
+        // Salvar dados do formulário automaticamente
+        function autoSaveFormData(formType) {
+            const preferences = StorageManager.getUserPreferences();
+            if (!preferences.autoSave) return;
+            
+            if (formType === 'login') {
+                const email = document.getElementById('login-email').value;
+                const remember = document.getElementById('remember-me').checked;
+                
+                if (email || remember) {
+                    StorageManager.saveFormData('login', { email, remember });
+                }
+            } else if (formType === 'register') {
+                const firstName = document.getElementById('register-firstname').value;
+                const lastName = document.getElementById('register-lastname').value;
+                const email = document.getElementById('register-email').value;
+                
+                if (firstName || lastName || email) {
+                    StorageManager.saveFormData('register', { firstName, lastName, email });
+                }
+            }
+        }
+        
+        // Adicionar listeners para auto-save
+        setTimeout(() => {
+            // Auto-save para login
+            ['login-email', 'remember-me'].forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('change', () => autoSaveFormData('login'));
+                    element.addEventListener('input', () => autoSaveFormData('login'));
+                }
+            });
+            
+            // Auto-save para registro
+            ['register-firstname', 'register-lastname', 'register-email'].forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.addEventListener('change', () => autoSaveFormData('register'));
+                    element.addEventListener('input', () => autoSaveFormData('register'));
+                }
+            });
+        }, 100);
+        
+        // Form switching
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const showRegisterBtn = document.getElementById('showRegisterBtn');
+        const showLoginBtn = document.getElementById('showLoginBtn');
+        
+        showRegisterBtn.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+            StorageManager.logActivity('form_switch', 'Mudança para formulário de registro');
+        });
+        
+        showLoginBtn.addEventListener('click', () => {
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+            StorageManager.logActivity('form_switch', 'Mudança para formulário de login');
+        });
+        
+        // Login form validation and processing
+        const loginButton = document.getElementById('loginButton');
+        const loginEmail = document.getElementById('login-email');
+        const loginPassword = document.getElementById('login-password');
+        const loginEmailError = document.getElementById('login-email-error');
+        const loginPasswordError = document.getElementById('login-password-error');
+        const rememberMe = document.getElementById('remember-me');
+        
+        loginButton.addEventListener('click', () => {
+            let isValid = true;
+            
+            // Reset errors
+            loginEmailError.classList.add('hidden');
+            loginPasswordError.classList.add('hidden');
+            loginEmail.classList.remove('border-error');
+            loginPassword.classList.remove('border-error');
+            
+            // Validate email
+            if (!loginEmail.value || !isValidEmail(loginEmail.value)) {
+                loginEmailError.classList.remove('hidden');
+                loginEmail.classList.add('border-error');
+                loginEmail.classList.add('error-shake');
+                setTimeout(() => {
+                    loginEmail.classList.remove('error-shake');
+                }, 500);
+                isValid = false;
+            }
+            
+            // Validate password
+            if (!loginPassword.value) {
+                loginPasswordError.classList.remove('hidden');
+                loginPassword.classList.add('border-error');
+                loginPassword.classList.add('error-shake');
+                setTimeout(() => {
+                    loginPassword.classList.remove('error-shake');
+                }, 500);
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Processar login
+                processLogin(loginEmail.value, loginPassword.value, rememberMe.checked);
+            }
+        });
+        
+        // Função para processar login
+        function processLogin(email, password, remember) {
+            showLoading(loginButton);
+            
+            // Registrar tentativa de login
+            StorageManager.logActivity('login_attempt', 'Tentativa de login', { email });
+            
+            // Simular validação (em produção, isso seria uma chamada para API)
+            setTimeout(() => {
+                // Buscar usuário registrado
+                const registeredUsers = getRegisteredUsers();
+                const user = registeredUsers.find(u => u.email === email);
+                
+                // Validar credenciais
+                const isValidLogin = user && user.password === btoa(password); // Verificar senha codificada
+                
+                if (isValidLogin) {
+                    // Atualizar dados do usuário
+                    const userData = {
+                        ...user,
+                        lastLogin: new Date().toISOString(),
+                        loginCount: (user.loginCount || 0) + 1
+                    };
+                    
+                    // Atualizar na lista de usuários
+                    updateUserInList(userData);
+                    
+                    // Gerar token simulado
+                    const token = 'lumina_token_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                    
+                    // Salvar dados no localStorage
+                    const tokenExpiry = remember ? 30 * 24 * 60 * 60 * 1000 : 24 * 60 * 60 * 1000; // 30 dias ou 1 dia
+                    
+                    StorageManager.saveUserData(userData);
+                    StorageManager.saveAuthToken(token, tokenExpiry);
+                    StorageManager.saveUserPreferences(userData.preferences);
+                    
+                    if (remember) {
+                        localStorage.setItem(StorageManager.keys.REMEMBER_LOGIN, 'true');
+                    }
+                    
+                    // Salvar timestamp do último login
+                    localStorage.setItem(StorageManager.keys.LAST_LOGIN, new Date().toISOString());
+                    
+                    // Limpar dados temporários do formulário de login
+                    StorageManager.saveFormData('login', {});
+                    
+                    // Registrar login bem-sucedido
+                    StorageManager.logActivity('login_success', 'Login realizado com sucesso', { 
+                        email, 
+                        remember,
+                        tokenExpiry: new Date(Date.now() + tokenExpiry).toISOString(),
+                        loginCount: userData.loginCount
+                    });
+                    
+                    // Mostrar mensagem de sucesso
+                    showNotification(`Bem-vindo de volta, ${userData.firstName}! Redirecionando...`, 'success');
+                    
+                    // Redirecionar para dashboard
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                } else {
+                    // Login falhou
+                    hideLoading(loginButton, 'Entrar');
+                    StorageManager.logActivity('login_failed', 'Falha no login - credenciais inválidas', { email });
+                    
+                    if (!user) {
+                        showNotification('Email não encontrado. Verifique o email ou crie uma conta.', 'error');
+                    } else {
+                        showNotification('Senha incorreta. Tente novamente.', 'error');
+                    }
+                }
+            }, 1500);
+        }
+        
+        // Register form validation and processing
+        const registerButton = document.getElementById('registerButton');
+        const registerFirstname = document.getElementById('register-firstname');
+        const registerLastname = document.getElementById('register-lastname');
+        const registerEmail = document.getElementById('register-email');
+        const registerPassword = document.getElementById('register-password');
+        const registerConfirmPassword = document.getElementById('register-confirm-password');
+        const termsCheckbox = document.getElementById('terms');
+        
+        const registerFirstnameError = document.getElementById('register-firstname-error');
+        const registerLastnameError = document.getElementById('register-lastname-error');
+        const registerEmailError = document.getElementById('register-email-error');
+        const registerPasswordError = document.getElementById('register-password-error');
+        const registerConfirmPasswordError = document.getElementById('register-confirm-password-error');
+        const termsError = document.getElementById('terms-error');
+        
+        registerButton.addEventListener('click', () => {
+            let isValid = true;
+            
+            // Reset errors
+            registerFirstnameError.classList.add('hidden');
+            registerLastnameError.classList.add('hidden');
+            registerEmailError.classList.add('hidden');
+            registerPasswordError.classList.add('hidden');
+            registerConfirmPasswordError.classList.add('hidden');
+            termsError.classList.add('hidden');
+            
+            registerFirstname.classList.remove('border-error');
+            registerLastname.classList.remove('border-error');
+            registerEmail.classList.remove('border-error');
+            registerPassword.classList.remove('border-error');
+            registerConfirmPassword.classList.remove('border-error');
+            
+            // Validate first name
+            if (!registerFirstname.value.trim()) {
+                registerFirstnameError.classList.remove('hidden');
+                registerFirstname.classList.add('border-error', 'error-shake');
+                setTimeout(() => registerFirstname.classList.remove('error-shake'), 500);
+                isValid = false;
+            }
+            
+            // Validate last name
+            if (!registerLastname.value.trim()) {
+                registerLastnameError.classList.remove('hidden');
+                registerLastname.classList.add('border-error', 'error-shake');
+                setTimeout(() => registerLastname.classList.remove('error-shake'), 500);
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!registerEmail.value || !isValidEmail(registerEmail.value)) {
+                registerEmailError.classList.remove('hidden');
+                registerEmail.classList.add('border-error', 'error-shake');
+                setTimeout(() => registerEmail.classList.remove('error-shake'), 500);
+                isValid = false;
+            }
+            
+            // Validate password
+            if (!registerPassword.value || registerPassword.value.length < 8) {
+                registerPasswordError.classList.remove('hidden');
+                registerPassword.classList.add('border-error', 'error-shake');
+                setTimeout(() => registerPassword.classList.remove('error-shake'), 500);
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            if (registerPassword.value !== registerConfirmPassword.value) {
+                registerConfirmPasswordError.classList.remove('hidden');
+                registerConfirmPassword.classList.add('border-error', 'error-shake');
+                setTimeout(() => registerConfirmPassword.classList.remove('error-shake'), 500);
+                isValid = false;
+            }
+            
+            // Validate terms
+            if (!termsCheckbox.checked) {
+                termsError.classList.remove('hidden');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Processar registro
+                processRegister(
+                    registerFirstname.value.trim(),
+                    registerLastname.value.trim(),
+                    registerEmail.value,
+                    registerPassword.value
+                );
+            }
+        });
+        
+        // ===============================
+        // INDICADOR DE FORÇA DA SENHA
+        // ===============================
+        
+        // Elementos do indicador de força da senha
+        const passwordStrengthContainer = document.getElementById('password-strength');
+        const passwordStrengthBar = document.getElementById('password-strength-bar');
+        const passwordStrengthText = document.getElementById('password-strength-text');
+        const passwordFeedback = document.getElementById('password-feedback');
+        
+        // Event listener para mostrar força da senha em tempo real
+        registerPassword.addEventListener('input', function() {
+            const password = this.value;
+            
+            if (password.length === 0) {
+                passwordStrengthContainer.classList.add('hidden');
+                return;
+            }
+            
+            passwordStrengthContainer.classList.remove('hidden');
+            
+            const strength = calculatePasswordStrength(password);
+            updatePasswordStrengthIndicator(strength);
+        });
+        
+        // Função para atualizar o indicador visual
+        function updatePasswordStrengthIndicator(strength) {
+            const { score, strength: level, feedback } = strength;
+            
+            // Atualizar barra de progresso
+            const percentage = Math.min(score, 100);
+            passwordStrengthBar.style.width = `${percentage}%`;
+            
+            // Definir cores e textos baseados no nível
+            const strengthConfig = {
+                'muito-fraca': {
+                    color: 'bg-red-500',
+                    text: 'Muito fraca',
+                    textColor: 'text-red-600'
+                },
+                'fraca': {
+                    color: 'bg-orange-500',
+                    text: 'Fraca',
+                    textColor: 'text-orange-600'
+                },
+                'boa': {
+                    color: 'bg-yellow-500',
+                    text: 'Boa',
+                    textColor: 'text-yellow-600'
+                },
+                'forte': {
+                    color: 'bg-green-500',
+                    text: 'Forte',
+                    textColor: 'text-green-600'
+                }
+            };
+            
+            const config = strengthConfig[level] || strengthConfig['muito-fraca'];
+            
+            // Atualizar classes da barra
+            passwordStrengthBar.className = `h-2 rounded-full transition-all duration-300 ${config.color}`;
+            
+            // Atualizar texto
+            passwordStrengthText.className = `text-sm font-medium ${config.textColor}`;
+            passwordStrengthText.textContent = config.text;
+            
+            // Atualizar feedback
+            if (feedback.length > 0 && level !== 'forte') {
+                passwordFeedback.textContent = `Dicas: ${feedback.slice(0, 2).join(', ')}`;
+                passwordFeedback.classList.remove('hidden');
+            } else if (level === 'forte') {
+                passwordFeedback.textContent = 'Excelente! Sua senha é forte e segura.';
+                passwordFeedback.className = 'mt-1 text-xs text-green-600';
+            } else {
+                passwordFeedback.classList.add('hidden');
+            }
+        }
+        
+        // Função para processar registro
+        function processRegister(firstName, lastName, email, password) {
+            showLoading(registerButton);
+            
+            // Registrar tentativa de cadastro
+            StorageManager.logActivity('register_attempt', 'Tentativa de cadastro', { email, firstName, lastName });
+            
+            // Simular processo de registro
+            setTimeout(() => {
+                // Verificar se email já existe
+                const registeredUsers = getRegisteredUsers();
+                const existingUser = registeredUsers.find(u => u.email === email);
+                
+                if (existingUser) {
+                    hideLoading(registerButton, 'Criar conta');
+                    StorageManager.logActivity('register_failed', 'Falha no cadastro - email já existe', { email });
+                    showNotification('Este email já está cadastrado. Tente fazer login.', 'error');
+                    return;
+                }
+                
+                // Validar força da senha
+                const passwordStrength = calculatePasswordStrength(password);
+                if (passwordStrength.score < 60) {
+                    hideLoading(registerButton, 'Criar conta');
+                    showNotification('Senha muito fraca. Use pelo menos 8 caracteres com letras, números e símbolos.', 'error');
+                    return;
+                }
+                
+                // Criar usuário
+                const userData = {
+                    id: Date.now(),
+                    email: email,
+                    firstName: firstName,
+                    lastName: lastName,
+                    password: btoa(password), // Codificar senha (em produção use hash adequado)
+                    avatar: `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=3B82F6&color=fff`,
+                    joinDate: new Date().toISOString(),
+                    lastLogin: new Date().toISOString(),
+                    loginCount: 1,
+                    preferences: {
+                        theme: 'light',
+                        notifications: true,
+                        language: 'pt-BR',
+                        autoSave: true
+                    },
+                    profile: {
+                        completionLevel: 10, // 10% completo após cadastro
+                        coursesEnrolled: 0,
+                        coursesCompleted: 0,
+                        totalStudyTime: 0,
+                        achievements: ['new_user']
+                    }
+                };
+                
+                // Adicionar usuário à lista de usuários registrados
+                addUserToList(userData);
+                
+                // Gerar token
+                const token = 'lumina_token_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                
+                // Salvar dados como usuário ativo
+                StorageManager.saveUserData(userData);
+                StorageManager.saveAuthToken(token, 24 * 60 * 60 * 1000); // 24 horas
+                StorageManager.saveUserPreferences(userData.preferences);
+                
+                // Limpar dados temporários do formulário
+                StorageManager.saveFormData('register', {});
+                
+                // Registrar cadastro bem-sucedido
+                StorageManager.logActivity('register_success', 'Cadastro realizado com sucesso', { 
+                    email, 
+                    firstName, 
+                    lastName,
+                    userId: userData.id
+                });
+                
+                // Mostrar mensagem de sucesso
+                showNotification(`Conta criada com sucesso! Bem-vindo, ${firstName}!`, 'success');
+                
+                // Redirecionar para dashboard
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            }, 2000);
+        }
+        
+        // ===============================
+        // FUNÇÕES AUXILIARES
+        // ===============================
+        
+        // Gerenciamento de múltiplos usuários
+        function getRegisteredUsers() {
+            const users = localStorage.getItem('lumina_registered_users');
+            return users ? JSON.parse(users) : [];
+        }
+        
+        function addUserToList(userData) {
+            const users = getRegisteredUsers();
+            users.push(userData);
+            localStorage.setItem('lumina_registered_users', JSON.stringify(users));
+        }
+        
+        function updateUserInList(userData) {
+            const users = getRegisteredUsers();
+            const idx = users.findIndex(u => u.email === userData.email);
+            if (idx !== -1) {
+                users[idx] = userData;
+                localStorage.setItem('lumina_registered_users', JSON.stringify(users));
+            }
+        }
+        
+        // Usuário demo para facilitar testes (só adiciona se não existir nenhum)
+        (function createDemoUser() {
+            const users = getRegisteredUsers();
+            if (!users.find(u => u.email === 'demo@lumina.com')) {
+                addUserToList({
+                    id: Date.now(),
+                    email: 'demo@lumina.com',
+                    password: btoa('12345678'),
+                    firstName: 'Demo',
+                    lastName: 'Lumina',
+                    avatar: 'https://ui-avatars.com/api/?name=Demo+Lumina&background=3B82F6&color=fff',
+                    joinDate: new Date().toISOString(),
+                    lastLogin: '',
+                    preferences: { theme: 'light', notifications: true, language: 'pt-BR', autoSave: true },
+                    profile: { completionLevel: 10, coursesEnrolled: 0, coursesCompleted: 0, totalStudyTime: 0 }
+                });
+            }
+        })();
+        
+        // Validação de força da senha
+        function calculatePasswordStrength(password) {
+            let score = 0;
+            let feedback = [];
+            
+            // Critérios de validação
+            if (password.length >= 8) {
+                score += 20;
+            } else {
+                feedback.push('Use pelo menos 8 caracteres');
+            }
+            
+            if (password.length >= 12) {
+                score += 10;
+            }
+            
+            if (/[a-z]/.test(password)) {
+                score += 15;
+            } else {
+                feedback.push('Adicione letras minúsculas');
+            }
+            
+            if (/[A-Z]/.test(password)) {
+                score += 15;
+            } else {
+                feedback.push('Adicione letras maiúsculas');
+            }
+            
+            if (/[0-9]/.test(password)) {
+                score += 15;
+            } else {
+                feedback.push('Adicione números');
+            }
+            
+            if (/[^A-Za-z0-9]/.test(password)) {
+                score += 25;
+            } else {
+                feedback.push('Adicione símbolos especiais');
+            }
+            
+            // Verificar padrões comuns
+            const commonPatterns = ['123456', 'password', 'qwerty', 'abc123'];
+            if (commonPatterns.some(pattern => password.toLowerCase().includes(pattern))) {
+                score -= 20;
+                feedback.push('Evite padrões comuns');
+            }
+            
+            let strength = 'muito-fraca';
+            if (score >= 80) strength = 'forte';
+            else if (score >= 60) strength = 'boa';
+            else if (score >= 40) strength = 'fraca';
+            
+            return { score, strength, feedback };
+        }
+        
+        // Email validation helper
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        // Função para mostrar loading
+        function showLoading(button) {
+            const originalText = button.textContent;
+            button.disabled = true;
+            button.setAttribute('data-original-text', originalText);
+            button.innerHTML = `
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Processando...
+            `;
+        }
+        
+        // Função para esconder loading
+        function hideLoading(button, text = null) {
+            button.disabled = false;
+            const originalText = text || button.getAttribute('data-original-text') || 'Enviar';
+            button.textContent = originalText;
+            button.removeAttribute('data-original-text');
+        }
+        
+        // Sistema de notificações
+        function showNotification(message, type = 'info', duration = 4000) {
+            // Remover notificações existentes
+            const existingNotifications = document.querySelectorAll('.notification-toast');
+            existingNotifications.forEach(notification => notification.remove());
+            
+            // Criar nova notificação
+            const notification = document.createElement('div');
+            notification.className = `notification-toast fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-all duration-300 max-w-sm`;
+            
+            // Definir cores baseadas no tipo
+            const colors = {
+                success: 'bg-green-500 text-white',
+                error: 'bg-red-500 text-white',
+                warning: 'bg-yellow-500 text-white',
+                info: 'bg-blue-500 text-white'
+            };
+            
+            notification.className += ` ${colors[type] || colors.info}`;
+            
+            // Ícones para cada tipo
+            const icons = {
+                success: `<svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                </svg>`,
+                error: `<svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>`,
+                warning: `<svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                </svg>`,
+                info: `<svg class="w-5 h-5 mr-2 inline" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                </svg>`
+            };
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    ${icons[type] || icons.info}
+                    <span class="flex-1">${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white/80 hover:text-white">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Mostrar notificação
+            setTimeout(() => {
+                notification.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Remover automaticamente
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, duration);
+            
+            // Registrar notificação
+            StorageManager.logActivity('notification_shown', `Notificação mostrada: ${type}`, { message, type });
+        }
+        
+        // ===============================
+        // FUNCIONALIDADES ADICIONAIS
+        // ===============================
+        
+        // Função para limpar dados (para desenvolvimento/debug)
+        function clearAllStorageData() {
+            if (confirm('Tem certeza que deseja limpar todos os dados salvos? Esta ação não pode ser desfeita.')) {
+                StorageManager.clearAllData();
+                showNotification('Todos os dados foram limpos com sucesso!', 'success');
+                
+                // Recarregar página
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+        }
+        
+        // Função para mostrar dados salvos (para debug)
+        function showStorageData() {
+            const userData = StorageManager.getUserData();
+            const preferences = StorageManager.getUserPreferences();
+            const activities = StorageManager.getActivityLog();
+            
+            console.group('📊 Dados do LocalStorage');
+            console.log('👤 Dados do Usuário:', userData);
+            console.log('⚙️ Preferências:', preferences);
+            console.log('📝 Log de Atividades:', activities);
+            console.log('🔐 Token Válido:', StorageManager.isTokenValid());
+            console.log('✅ Usuário Logado:', StorageManager.isLoggedIn());
+            console.groupEnd();
+        }
+        
+        // Adicionar atalhos de teclado para debug (Ctrl+Shift+D)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+                e.preventDefault();
+                showStorageData();
+            }
+            
+            if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                e.preventDefault();
+                clearAllStorageData();
+            }
+        });
+        
+        // Adicionar informações de debug no console
+        console.log('🚀 Lumina Academy - Sistema de LocalStorage Inicializado');
+        console.log('🔧 Debug: Ctrl+Shift+D para ver dados | Ctrl+Shift+C para limpar dados');
+        
+        // Mostrar estatísticas iniciais
+        if (StorageManager.isLoggedIn()) {
+            const userData = StorageManager.getUserData();
+            console.log(`👋 Usuário logado: ${userData.firstName} ${userData.lastName}`);
+        } else {
+            console.log('👤 Nenhum usuário logado');
+        }
+        
+        const activities = StorageManager.getActivityLog();
+        console.log(`📈 Total de atividades registradas: ${activities.length}`);
+    </script>
+</body>
+</html>
