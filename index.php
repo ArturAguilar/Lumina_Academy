@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumina Academy - Sua plataforma de estudos para vestibulares</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/auth-check.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -201,7 +202,7 @@
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <a href="index.html" class="flex items-center space-x-1 hover:opacity-80 transition-opacity">
+                        <a href="index.php" class="flex items-center space-x-1 hover:opacity-80 transition-opacity">
                             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563eb"/>
                                 <path d="M2 17L12 22L22 17" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -220,8 +221,8 @@
                     <a href="#contato" class="nav-link px-2 py-1 text-gray-700 hover:text-blue-600 transition-colors text-sm font-medium">Contato</a>
                 </div>
                 <div class="flex items-center space-x-3">
-                    <button id="loginBtn" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-full text-sm font-medium hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/login.html'">Entrar</button>
-                    <a href="cliente/login.html" id="registerBtn" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg">Cadastre-se</a>
+                    <button id="loginBtn" class="px-4 py-2 text-blue-600 border border-blue-600 rounded-full text-sm font-medium hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/login.php?view=login'">Entrar</button>
+                    <a href="cliente/login.php?view=register" id="registerBtn" class="px-4 py-2 bg-blue-600 text-white rounded-full text-sm font-medium hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg">Cadastre-se</a>
                     <button id="mobileMenuBtn" class="md:hidden p-2 rounded-md text-gray-700 hover:text-blue-600 focus:outline-none">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -261,7 +262,7 @@
                         Organize seus estudos, acompanhe seu progresso e conquiste sua aprovação com a metodologia exclusiva da Lumina Academy.
                     </p>
                     <div class="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-                        <button id="startNowBtn" class="px-8 py-3 bg-white text-blue-600 font-medium rounded-full hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" onclick="window.location.href='cliente/login.html'">
+                        <button id="startNowBtn" class="px-8 py-3 bg-white text-blue-600 font-medium rounded-full hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1" onclick="window.location.href='cliente/login.php?view=register'">
                             Começar Agora
                         </button>
                         <button id="knowMoreBtn" class="px-8 py-3 border-2 border-white text-white font-medium rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300 group">
@@ -347,7 +348,7 @@
                                     </div>
                                 </div>
                             </div>
-                                  <a href="cliente/dashboard.html" class="w-full py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
+                                  <a href="cliente/dashboard.php" class="w-full py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center">
                             <span>Ver dashboard completo</span>
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -438,14 +439,16 @@
                                     <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 75%"></div>
                                 </div>
                             </div>
-                            <button class="flex items-center justify-center w-10 h-10 bg-blue-50 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/exercicios.html'">
+                            <button class="flex items-center justify-center w-10 h-10 bg-blue-50 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="checkRestrictedAccess('cliente/materias.php?materia=matematica')">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
                             </button>
                         </div>
                     </div>
-                </div>                        <!-- Física -->
+                </div>                        
+                
+                <!-- Física -->
                 <div class="bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 card-hover">
                     <div class="h-2 bg-blue-600"></div>
                     <div class="p-6">
@@ -472,7 +475,7 @@
                                     <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 60%"></div>
                                 </div>
                             </div>
-                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/exercicios.html'">
+                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="checkRestrictedAccess('cliente/materias.php?materia=fisica')">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
@@ -508,7 +511,7 @@
                                     <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 45%"></div>
                                 </div>
                             </div>
-                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/exercicios.html'">
+                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="checkRestrictedAccess('cliente/materias.php?materia=quimica')">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
@@ -544,7 +547,7 @@
                                     <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 80%"></div>
                                 </div>
                             </div>
-                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/exercicios.html'">
+                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="checkRestrictedAccess('cliente/materias.php?materia=biologia')">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
@@ -580,7 +583,7 @@
                                     <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 65%"></div>
                                 </div>
                             </div>
-                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/exercicios.html'">
+                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="checkRestrictedAccess('cliente/materias.php?materia=literatura')">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
@@ -616,7 +619,7 @@
                                     <div class="bg-blue-600 h-2 rounded-full progress-bar" style="width: 55%"></div>
                                 </div>
                             </div>
-                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="window.location.href='cliente/exercicios.html'">
+                            <button class="flex items-center justify-center w-10 h-10 bg-blue-600 bg-opacity-10 rounded-full text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300" onclick="checkRestrictedAccess('cliente/materias.php?materia=historia')">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                                 </svg>
@@ -627,7 +630,7 @@
             </div>
             
             <div class="mt-12 text-center">
-                <button class="px-8 py-3 bg-blue-600 text-white font-medium rounded-full hover:bg-secondary transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center mx-auto" onclick="window.location.href='cliente/exercicios.html'">
+                <button class="px-8 py-3 bg-blue-600 text-white font-medium rounded-full hover:bg-secondary transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 flex items-center mx-auto" onclick="checkRestrictedAccess('cliente/materias.php')">
                     <span>Ver todas as matérias</span>
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -708,7 +711,7 @@
                                 <span class="text-sm">Suporte personalizado</span>
                             </li>
                         </ul>
-                        <button class="w-full py-3 bg-gray-100 text-blue-600 font-medium rounded-lg hover:bg-gray-200 transition-all duration-300 flex items-center justify-center" onclick="window.location.href='cliente/dashboard.html'">
+                        <button class="w-full py-3 bg-gray-100 text-blue-600 font-medium rounded-lg hover:bg-gray-200 transition-all duration-300 flex items-center justify-center" onclick="checkRestrictedAccess('cliente/perfil_aluno.php')">
                             <span>Começar agora</span>
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -772,7 +775,7 @@
                                 <span class="text-sm">Suporte personalizado</span>
                             </li>
                         </ul>
-                        <button class="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-secondary transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center" onclick="window.location.href='cliente/dashboard.html'">
+                        <button class="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-secondary transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center" onclick="checkRestrictedAccess('cliente/perfil_aluno.php')">
                             <span>Assinar agora</span>
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -833,7 +836,7 @@
                                 <span class="text-gray-600 text-sm">Suporte personalizado</span>
                             </li>
                         </ul>
-                        <button class="w-full py-3 bg-gray-100 text-blue-600 font-medium rounded-lg hover:bg-gray-200 transition-all duration-300 flex items-center justify-center" onclick="window.location.href='cliente/dashboard.html'">
+                        <button class="w-full py-3 bg-gray-100 text-blue-600 font-medium rounded-lg hover:bg-gray-200 transition-all duration-300 flex items-center justify-center" onclick="checkRestrictedAccess('cliente/perfil_aluno.php')">
                             <span>Assinar agora</span>
                             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -893,7 +896,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">Cronograma Personalizado</h3>
                     <p class="text-gray-600 text-sm mb-4">Organize seus estudos de acordo com seu tempo disponível e objetivos. Nosso algoritmo cria um plano ideal para você.</p>
-                    <a href="cliente/dashboard.html" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
+                    <a href="cliente/cronograma.php" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
                         <span>Saiba mais</span>
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -910,7 +913,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">Banco de Questões</h3>
                     <p class="text-gray-600 text-sm mb-4">Mais de 50.000 questões de vestibulares anteriores com resolução detalhada e classificadas por nível de dificuldade.</p>
-                    <a href="cliente/exercicios.html" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
+                    <a href="cliente/exercicios.php" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
                         <span>Saiba mais</span>
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -927,7 +930,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">Central de Suporte</h3>
                     <p class="text-gray-600 text-sm mb-4">Suporte completo 24/7 com chat ao vivo, FAQ detalhado e atendimento especializado para otimizar seus estudos.</p>
-                    <a href="cliente/suporte.html" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
+                    <a href="cliente/suporte.php" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
                         <span>Saiba mais</span>
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -944,7 +947,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-800 mb-3">Análise de Desempenho</h3>
                     <p class="text-gray-600 text-sm mb-4">Relatórios detalhados do seu progresso com gráficos e estatísticas para acompanhar sua evolução nos estudos.</p>
-                    <a href="cliente/dashboard.html" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
+                    <a href="cliente/desempenho.php" class="text-blue-600 font-medium text-sm flex items-center mt-auto">
                         <span>Saiba mais</span>
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
@@ -1076,7 +1079,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="text-white font-medium">contato@luminaacademy.com.br</p>
+                                <a href="mailto:contato@luminaacademy.com.br?subject=Interesse nos planos da Lumina Academy" class="text-white font-medium hover:text-blue-300 transition-colors cursor-pointer">contato@luminaacademy.com.br</a>
                                 <p class="text-white text-opacity-75 text-sm">Resposta em até 2 horas</p>
                             </div>
                         </div>
@@ -1088,7 +1091,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="text-white font-medium">(11) 99999-8888</p>
+                                <a href="https://wa.me/5511999998888?text=Olá! Gostaria de saber mais sobre os planos da Lumina Academy 🎓" target="_blank" class="text-white font-medium hover:text-green-300 transition-colors cursor-pointer">(11) 99999-8888</a>
                                 <p class="text-white text-opacity-75 text-sm">WhatsApp disponível 24h</p>
                             </div>
                         </div>
@@ -1106,6 +1109,23 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Botões de ação rápida -->
+                    <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                        <button onclick="openWhatsApp()" class="flex items-center justify-center px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-700 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                            </svg>
+                            <span>Falar no WhatsApp</span>
+                        </button>
+                        
+                        <button onclick="openEmail()" class="flex items-center justify-center px-6 py-3 bg-white bg-opacity-20 text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-30 transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 border border-white border-opacity-20">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Enviar Email</span>
+                        </button>
+                    </div>
                 </div>
                 
                 <div class="bg-white rounded-2xl p-8 shadow-2xl">
@@ -1113,17 +1133,17 @@
                     <form class="space-y-6">
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nome completo</label>
-                            <input type="text" id="name" name="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Seu nome aqui...">
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="Seu nome aqui...">
                         </div>
                         
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
-                            <input type="email" id="email" name="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="seu@email.com">
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="seu@email.com">
                         </div>
                         
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">WhatsApp</label>
-                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="(11) 99999-9999">
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300" placeholder="(11) 99999-9999">
                         </div>
                         
                         <div>
@@ -1161,7 +1181,7 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Logo e descrição -->
                 <div class="md:col-span-1">
-                    <a href="index.html" class="flex items-center space-x-2 mb-4 hover:opacity-80 transition-opacity">
+                    <a href="index.php" class="flex items-center space-x-2 mb-4 hover:opacity-80 transition-opacity">
                         <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563eb"/>
                             <path d="M2 17L12 22L22 17" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1212,12 +1232,12 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Matérias</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="cliente/exercicios.html" class="hover:text-blue-600 transition-colors">Matemática</a></li>
-                        <li><a href="cliente/exercicios.html" class="hover:text-blue-600 transition-colors">Física</a></li>
-                        <li><a href="cliente/exercicios.html" class="hover:text-blue-600 transition-colors">Química</a></li>
-                        <li><a href="cliente/exercicios.html" class="hover:text-blue-600 transition-colors">Biologia</a></li>
-                        <li><a href="cliente/exercicios.html" class="hover:text-blue-600 transition-colors">Literatura</a></li>
-                        <li><a href="cliente/exercicios.html" class="hover:text-blue-600 transition-colors">História</a></li>
+                        <li><a href="cliente/exercicios.php" class="hover:text-blue-600 transition-colors">Matemática</a></li>
+                        <li><a href="cliente/exercicios.php" class="hover:text-blue-600 transition-colors">Física</a></li>
+                        <li><a href="cliente/exercicios.php" class="hover:text-blue-600 transition-colors">Química</a></li>
+                        <li><a href="cliente/exercicios.php" class="hover:text-blue-600 transition-colors">Biologia</a></li>
+                        <li><a href="cliente/exercicios.php" class="hover:text-blue-600 transition-colors">Literatura</a></li>
+                        <li><a href="cliente/exercicios.php" class="hover:text-blue-600 transition-colors">História</a></li>
                     </ul>
                 </div>
                 
@@ -1225,12 +1245,12 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Suporte</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="cliente/dashboard.html" class="hover:text-blue-600 transition-colors">Central de Ajuda</a></li>
-                        <li><a href="cliente/dashboard.html" class="hover:text-blue-600 transition-colors">FAQ</a></li>
-                        <li><a href="cliente/dashboard.html" class="hover:text-blue-600 transition-colors">Política de Privacidade</a></li>
-                        <li><a href="cliente/dashboard.html" class="hover:text-blue-600 transition-colors">Termos de Uso</a></li>
-                        <li><a href="cliente/dashboard.html" class="hover:text-blue-600 transition-colors">Cancelamento</a></li>
-                        <li><a href="cliente/dashboard.html" class="hover:text-blue-600 transition-colors">Reembolso</a></li>
+                        <li><a href="cliente/dashboard.php" class="hover:text-blue-600 transition-colors">Central de Ajuda</a></li>
+                        <li><a href="cliente/dashboard.php" class="hover:text-blue-600 transition-colors">FAQ</a></li>
+                        <li><a href="cliente/dashboard.php" class="hover:text-blue-600 transition-colors">Política de Privacidade</a></li>
+                        <li><a href="cliente/dashboard.php" class="hover:text-blue-600 transition-colors">Termos de Uso</a></li>
+                        <li><a href="cliente/dashboard.php" class="hover:text-blue-600 transition-colors">Cancelamento</a></li>
+                        <li><a href="cliente/dashboard.php" class="hover:text-blue-600 transition-colors">Reembolso</a></li>
                     </ul>
                 </div>
             </div>
@@ -1317,6 +1337,20 @@
                 return;
             }
             
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Por favor, insira um email válido.');
+                return;
+            }
+            
+            // Phone validation (basic)
+            const phoneRegex = /^[\d\s\(\)\-\+]{10,}$/;
+            if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
+                alert('Por favor, insira um telefone válido.');
+                return;
+            }
+            
             // Simulate form submission
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
@@ -1325,7 +1359,20 @@
             submitBtn.disabled = true;
             
             setTimeout(() => {
-                alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve. 🚀');
+                // Create WhatsApp message
+                const whatsappMessage = `🎓 *Nova mensagem do site Lumina Academy*%0A%0A*Nome:* ${name}%0A*Email:* ${email}%0A*Telefone:* ${phone}%0A*Vestibular:* ${vestibular || 'Não informado'}%0A*Mensagem:* ${message || 'Sem mensagem adicional'}`;
+                const whatsappURL = `https://wa.me/5511999998888?text=${whatsappMessage}`;
+                
+                // Show success message with options
+                const userChoice = confirm('Mensagem processada com sucesso! 🚀\n\nGostaria de enviar também pelo WhatsApp para um atendimento mais rápido?\n\nClique "OK" para WhatsApp ou "Cancelar" para continuar.');
+                
+                if (userChoice) {
+                    // Open WhatsApp
+                    window.open(whatsappURL, '_blank');
+                } else {
+                    alert('Mensagem enviada! Nossa equipe entrará em contato em breve. �');
+                }
+                
                 this.reset();
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
@@ -1358,13 +1405,6 @@
         });
 
         // Button interactions
-        const startNowBtn = document.getElementById('startNowBtn');
-        if (startNowBtn) {
-            startNowBtn.addEventListener('click', function() {
-                window.location.href = 'cliente/dashboard.html';
-            });
-        }
-
         document.getElementById('knowMoreBtn').addEventListener('click', function() {
             document.querySelector('#materias').scrollIntoView({ behavior: 'smooth' });
         });
@@ -1479,6 +1519,24 @@
             el.style.transform = 'translateY(20px)';
             elementObserver.observe(el);
         });
+
+        // Contact functions
+        function openWhatsApp() {
+            const message = "Olá! Gostaria de saber mais sobre os planos da Lumina Academy 🎓";
+            const whatsappURL = `https://wa.me/5511999998888?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        function openEmail() {
+            const subject = "Interesse nos planos da Lumina Academy";
+            const body = "Olá,\n\nGostaria de saber mais informações sobre os planos de estudo da Lumina Academy.\n\nAguardo retorno.\n\nObrigado(a)!";
+            const emailURL = `mailto:contato@luminaacademy.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = emailURL;
+        }
+
+        // Make functions globally available
+        window.openWhatsApp = openWhatsApp;
+        window.openEmail = openEmail;
 
         // Console welcome message
         console.log(`

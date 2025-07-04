@@ -18,7 +18,7 @@
             <div class="flex flex-col w-64 bg-white border-r border-gray-200">
                 <!-- Logo -->
                 <div class="flex items-center px-6 py-4">
-                    <a href="../index.html" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                    <a href="../index.php" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                         <div class="p-2 rounded-lg">
                             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563eb"/>
@@ -48,31 +48,31 @@
                 <!-- Navigation Menu -->
                 <div class="flex-1 px-4 py-4">
                     <nav class="space-y-1">
-                        <a href="dashboard.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="dashboard.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
                             Dashboard
                         </a>
-                        <a href="materias.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="materias.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                             Matérias
                         </a>
-                        <a href="exercicios.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="exercicios.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
                             </svg>
                             Exercícios
                         </a>
-                        <a href="cronograma.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="cronograma.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             Cronograma
                         </a>
-                        <a href="desempenho.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="desempenho.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
@@ -350,6 +350,47 @@
             </main>
         </div>
     </div>
+
+    <!-- Auth Check -->
+    <script src="../js/auth-check.js"></script>
+    <script>
+        // Verificar autenticação na página de suporte
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isUserLoggedIn()) {
+                alert('Você precisa estar logado para acessar o suporte.');
+                window.location.href = 'login.php';
+                return;
+            }
+            
+            // Nota: Suporte geralmente é acessível a todos os usuários logados
+            // Não restringir por permissão específica
+            
+            // Atualizar interface com dados do usuário
+            const user = getCurrentUser();
+            if (user) {
+                document.querySelectorAll('.user-name').forEach(element => {
+                    element.textContent = user.name;
+                });
+                
+                document.querySelectorAll('.user-avatar').forEach(element => {
+                    element.textContent = user.name.charAt(0).toUpperCase();
+                });
+                
+                // Atualizar nome nas informações do perfil
+                const profileNameElement = document.querySelector('.flex.items-center.space-x-3 p:first-child');
+                if (profileNameElement) {
+                    profileNameElement.textContent = user.name;
+                }
+                
+                console.log('🆘 Suporte carregado para:', user.name, '| Role:', user.role);
+                
+                // Adicionar informações de contexto para o suporte baseado no tipo de usuário
+                if (user.role === 'demo') {
+                    console.log('ℹ️ Usuário demo - suporte limitado disponível');
+                }
+            }
+        });
+    </script>
 
     <script src="js/main.js"></script>
 </body>

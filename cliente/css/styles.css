@@ -75,3 +75,57 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }
+
+/* Profile Dropdown Styles */
+#profileDropdownMenu {
+    z-index: 9999;
+    min-width: 14rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+#profileDropdownMenu a:hover,
+#profileDropdownMenu button:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+}
+
+#logoutButton:hover {
+    background-color: rgba(239, 68, 68, 0.05) !important;
+}
+
+/* Animation for smooth transitions */
+.task-item:hover .task-actions {
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Notification styles */
+.notification-enter {
+    animation: slideInRight 0.3s ease-out forwards;
+}
+
+.notification-exit {
+    animation: slideOutRight 0.3s ease-in forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}

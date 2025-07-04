@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +18,7 @@
             <div class="flex flex-col w-64 bg-white border-r border-gray-200">
                 <!-- Logo -->
                 <div class="flex items-center px-6 py-4">
-                    <a href="../index.html" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                    <a href="../index.php" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                         <div class="p-2 rounded-lg">
                             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563eb"/>
@@ -35,11 +35,11 @@
                 <!-- User Profile at top -->
                 <div class="px-6 py-4 border-b border-gray-100">
                     <div class="flex items-center space-x-3">
-                        <div class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">
+                        <div class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm user-avatar">
                             M
                         </div>
                         <div>
-                            <p class="text-sm font-medium text-gray-900">Maria Silva</p>
+                            <p class="text-sm font-medium text-gray-900 user-name">Maria Silva</p>
                             <p class="text-xs text-gray-500">Plano Premium</p>
                         </div>
                     </div>
@@ -54,31 +54,31 @@
                             </svg>
                             Dashboard
                         </a>
-                        <a href="materias.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="materias.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                             </svg>
                             Matérias
                         </a>
-                        <a href="exercicios.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="exercicios.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
                             </svg>
                             Exercícios
                         </a>
-                        <a href="cronograma.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="cronograma.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             Cronograma
                         </a>
-                        <a href="desempenho.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="desempenho.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                             Desempenho
                         </a>
-                        <a href="suporte.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="suporte.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
                             </svg>
@@ -124,14 +124,54 @@
                         </button>
 
                         <!-- Profile dropdown -->
-                        <div class="ml-3 relative">
+                        <div class="ml-3 relative" id="profileDropdown">
                             <div>
-                                <button class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none">
+                                <button id="profileButton" class="max-w-xs bg-white flex items-center text-sm rounded-full focus:outline-none hover:bg-gray-50 transition-colors duration-200">
                                     <span class="sr-only">Abrir menu do usuário</span>
-                                    <div class="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-bold">
+                                    <div class="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center font-bold user-avatar">
                                         M
                                     </div>
                                 </button>
+                            </div>
+                            <!-- Dropdown menu -->
+                            <div id="profileDropdownMenu" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none transform opacity-0 scale-95 transition-all duration-200 ease-out pointer-events-none">
+                                <div class="py-1" role="menu" aria-orientation="vertical">
+                                    <!-- User info -->
+                                    <div class="px-4 py-3 border-b border-gray-100">
+                                        <p class="text-sm font-medium text-gray-900 user-name">Maria Silva</p>
+                                        <p class="text-sm text-gray-500 user-email">maria@exemplo.com</p>
+                                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary bg-opacity-10 text-primary mt-1">
+                                            Plano Premium
+                                        </span>
+                                    </div>
+                                    <!-- Menu items -->
+                                    <a href="#" class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150" role="menuitem">
+                                        <svg class="mr-3 h-4 w-4 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                                        </svg>
+                                        Meu Perfil
+                                    </a>
+                                    <a href="#" class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150" role="menuitem">
+                                        <svg class="mr-3 h-4 w-4 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        </svg>
+                                        Configurações
+                                    </a>
+                                    <a href="#" class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-150" role="menuitem">
+                                        <svg class="mr-3 h-4 w-4 text-gray-400 group-hover:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        Ajuda & Suporte
+                                    </a>
+                                    <hr class="my-1">
+                                    <button id="logoutButton" class="group w-full flex items-center px-4 py-2 text-sm text-red-700 hover:bg-red-50 transition-colors duration-150" role="menuitem">
+                                        <svg class="mr-3 h-4 w-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                        </svg>
+                                        Sair
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -146,7 +186,7 @@
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                         <div class="flex-1 min-w-0">
                             <h1 class="text-2xl font-bold leading-7 text-gray-800 sm:text-3xl sm:truncate">
-                                Olá, Maria!
+                                Olá, <span class="user-name">Maria</span>!
                             </h1>
                             <p class="mt-1 text-sm text-gray-500">
                                 Terça-feira, 15 de Agosto • Faltam 87 dias para o ENEM
@@ -738,6 +778,351 @@
         </main>
     </div>
 </div>
+
+<script>
+// ========================================
+// DROPDOWN DO PERFIL DE USUÁRIO
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const profileButton = document.getElementById('profileButton');
+    const profileDropdown = document.getElementById('profileDropdown');
+    const profileDropdownMenu = document.getElementById('profileDropdownMenu');
+    const logoutButton = document.getElementById('logoutButton');
+    
+    let isDropdownOpen = false;
+    
+    // Toggle do dropdown
+    function toggleDropdown() {
+        isDropdownOpen = !isDropdownOpen;
+        
+        if (isDropdownOpen) {
+            profileDropdownMenu.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+            profileDropdownMenu.classList.add('opacity-100', 'scale-100');
+        } else {
+            profileDropdownMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            profileDropdownMenu.classList.remove('opacity-100', 'scale-100');
+        }
+    }
+    
+    // Fechar dropdown
+    function closeDropdown() {
+        if (isDropdownOpen) {
+            isDropdownOpen = false;
+            profileDropdownMenu.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+            profileDropdownMenu.classList.remove('opacity-100', 'scale-100');
+        }
+    }
+    
+    // Event listeners
+    profileButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleDropdown();
+    });
+    
+    // Fechar dropdown quando clicar fora
+    document.addEventListener('click', function(e) {
+        if (!profileDropdown.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+    
+    // Fechar dropdown com tecla Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+    
+    // ========================================
+    // FUNCIONALIDADE DE LOGOUT
+    // ========================================
+    
+    logoutButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        performLogout();
+    });
+    
+    function performLogout() {
+        // Mostrar confirmação antes de sair
+        if (confirm('Tem certeza que deseja sair?')) {
+            // Adicionar loading ao botão
+            const originalText = logoutButton.innerHTML;
+            logoutButton.innerHTML = `
+                <svg class="mr-3 h-4 w-4 text-red-500 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Saindo...
+            `;
+            logoutButton.disabled = true;
+            
+            // Simular processo de logout
+            setTimeout(() => {
+                try {
+                    // Limpar dados de sessão do localStorage
+                    const keysToRemove = [
+                        'lumina_user_data',
+                        'lumina_auth_token', 
+                        'lumina_remember_login',
+                        'lumina_last_login',
+                        'lumina_user_preferences',
+                        'lumina_form_data',
+                        'lumina_activity_log'
+                    ];
+                    
+                    keysToRemove.forEach(key => {
+                        localStorage.removeItem(key);
+                    });
+                    
+                    // Limpar tentativas de login falhadas
+                    Object.keys(localStorage).forEach(key => {
+                        if (key.startsWith('failed_attempts_')) {
+                            localStorage.removeItem(key);
+                        }
+                    });
+                    
+                    // Registrar logout no console
+                    console.log('🚪 Logout realizado com sucesso');
+                    
+                    // Mostrar notificação de sucesso
+                    showLogoutNotification('Logout realizado com sucesso. Até logo!', 'success');
+                    
+                    // Redirecionar para página de login
+                    setTimeout(() => {
+                        window.location.href = 'login.php';
+                    }, 1000);
+                    
+                } catch (error) {
+                    console.error('Erro durante logout:', error);
+                    
+                    // Restaurar botão em caso de erro
+                    logoutButton.innerHTML = originalText;
+                    logoutButton.disabled = false;
+                    
+                    showLogoutNotification('Erro ao fazer logout. Tente novamente.', 'error');
+                }
+            }, 1500);
+        }
+    }
+    
+    // Função para mostrar notificação de logout
+    function showLogoutNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg max-w-sm transform transition-all duration-300 translate-x-full opacity-0`;
+        
+        if (type === 'success') {
+            notification.classList.add('bg-green-500', 'text-white');
+        } else if (type === 'error') {
+            notification.classList.add('bg-red-500', 'text-white');
+        } else {
+            notification.classList.add('bg-blue-500', 'text-white');
+        }
+        
+        notification.innerHTML = `
+            <div class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    ${type === 'success' ? 
+                        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>' :
+                        type === 'error' ?
+                        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>' :
+                        '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>'
+                    }
+                </svg>
+                <span>${message}</span>
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.remove('translate-x-full', 'opacity-0');
+        }, 100);
+        
+        setTimeout(() => {
+            notification.classList.add('translate-x-full', 'opacity-0');
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 300);
+        }, 3000);
+    }
+    
+    // ========================================
+    // VERIFICAÇÃO DE AUTENTICAÇÃO
+    // ========================================
+    
+    function checkAuthentication() {
+        const userData = localStorage.getItem('lumina_user_data');
+        const authToken = localStorage.getItem('lumina_auth_token');
+        
+        if (!userData || !authToken) {
+            console.log('⚠️ Usuário não autenticado, redirecionando...');
+            window.location.href = 'login.php';
+            return false;
+        }
+        
+        try {
+            const tokenData = JSON.parse(authToken);
+            if (Date.now() > tokenData.expires) {
+                console.log('⚠️ Token expirado, redirecionando...');
+                performLogout();
+                return false;
+            }
+        } catch (error) {
+            console.error('Erro ao verificar token:', error);
+            window.location.href = 'login.php';
+            return false;
+        }
+        
+        return true;
+    }
+    
+    // Executar verificação de autenticação
+    checkAuthentication();
+    
+    // ========================================
+    // CARREGAR DADOS DO USUÁRIO
+    // ========================================
+    
+    function loadUserData() {
+        try {
+            const userData = localStorage.getItem('lumina_user_data');
+            if (userData) {
+                const user = JSON.parse(userData);
+                
+                // Atualizar nome do usuário
+                const userNameElements = document.querySelectorAll('.user-name');
+                userNameElements.forEach(element => {
+                    element.textContent = `${user.firstName} ${user.lastName}`;
+                });
+                
+                // Atualizar email
+                const userEmailElements = document.querySelectorAll('.user-email');
+                userEmailElements.forEach(element => {
+                    element.textContent = user.email;
+                });
+                
+                // Atualizar iniciais do avatar
+                const avatarElements = document.querySelectorAll('.user-avatar');
+                avatarElements.forEach(element => {
+                    element.textContent = user.firstName.charAt(0).toUpperCase();
+                });
+                
+                console.log('✅ Dados do usuário carregados:', user.firstName);
+            }
+        } catch (error) {
+            console.error('Erro ao carregar dados do usuário:', error);
+        }
+    }
+    
+    // Carregar dados do usuário
+    loadUserData();
+});
+</script>
+
+<!-- Auth Check and User Management -->
+<script src="../js/auth-check.js"></script>
+<script>
+    // Verificar se o usuário está autenticado e é estudante
+    document.addEventListener('DOMContentLoaded', function() {
+        if (!isUserLoggedIn()) {
+            window.location.href = 'login.php';
+            return;
+        }
+        
+        const user = getCurrentUser();
+        if (!user) {
+            window.location.href = 'login.php';
+            return;
+        }
+        
+        // Verificar se é estudante ou demo (ambos podem acessar o dashboard principal)
+        if (!hasPermission('access_student_dashboard')) {
+            // Se não for estudante, redirecionar para o dashboard apropriado
+            if (user.role === 'admin') {
+                window.location.href = 'admin-dashboard.php';
+            } else if (user.role === 'teacher') {
+                window.location.href = 'teacher-dashboard.php';
+            } else if (user.role === 'moderator') {
+                window.location.href = 'moderator-dashboard.php';
+            } else {
+                alert('Acesso negado. Você não tem permissão para acessar esta área.');
+                window.location.href = 'login.php';
+            }
+            return;
+        }
+        
+        // Atualizar interface com dados do usuário
+        updateStudentInterface();
+        
+        console.log('👋 Bem-vindo ao Dashboard do Estudante!');
+        console.log('📚 Usuário:', user.name, '| Role:', user.role);
+        console.log('✅ Permissões:', user.permissions);
+    });
+    
+    function updateStudentInterface() {
+        const user = getCurrentUser();
+        if (!user) return;
+        
+        // Atualizar nome do usuário
+        document.querySelectorAll('.user-name').forEach(element => {
+            element.textContent = user.name;
+        });
+        
+        // Atualizar email (se existir elemento)
+        document.querySelectorAll('.user-email').forEach(element => {
+            element.textContent = user.email;
+        });
+        
+        // Atualizar avatar
+        document.querySelectorAll('.user-avatar').forEach(element => {
+            element.textContent = user.name.charAt(0).toUpperCase();
+        });
+        
+        // Personalizar saudação baseada no horário
+        const hour = new Date().getHours();
+        let greeting = 'Olá';
+        if (hour < 12) {
+            greeting = 'Bom dia';
+        } else if (hour < 18) {
+            greeting = 'Boa tarde';
+        } else {
+            greeting = 'Boa noite';
+        }
+        
+        const greetingElement = document.querySelector('h1');
+        if (greetingElement) {
+            greetingElement.innerHTML = `${greeting}, <span class="user-name">${user.name}</span>!`;
+        }
+        
+        // Mostrar indicador de tipo de usuário
+        if (user.role === 'demo') {
+            const userTypeElements = document.querySelectorAll('p:contains("Plano Premium")');
+            userTypeElements.forEach(element => {
+                if (element.textContent.includes('Plano Premium')) {
+                    element.textContent = 'Conta Demo';
+                    element.className = element.className.replace('text-primary', 'text-orange-600');
+                    element.className = element.className.replace('bg-primary', 'bg-orange-100');
+                }
+            });
+        }
+    }
+    
+    // Função personalizada de logout para estudantes
+    function studentLogout() {
+        if (confirm('Tem certeza que deseja sair?')) {
+            localStorage.removeItem('currentUser');
+            console.log('👋 Logout do estudante realizado');
+            window.location.href = 'login.php';
+        }
+    }
+    
+    // Substituir a função de logout padrão
+    window.performLogout = studentLogout;
+</script>
 
 <script src="js/utils.js"></script>
 <script src="js/data.js"></script>

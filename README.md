@@ -4,6 +4,9 @@
 
 O Lumina Academy é uma plataforma moderna e completa para estudos de vestibulares, oferecendo cronogramas personalizados, banco de questões, simulados realistas e análise de desempenho para maximizar as chances de aprovação dos estudantes.
 
+**🆕 NOVO: Sistema de Login com Níveis de Acesso**
+A plataforma agora conta com um sistema completo de autenticação e autorização, com diferentes tipos de usuário e dashboards personalizados.
+
 ## 🚀 Tecnologias Utilizadas
 
 - **HTML5**: Estrutura semântica e acessível
@@ -11,33 +14,81 @@ O Lumina Academy é uma plataforma moderna e completa para estudos de vestibular
 - **JavaScript ES6+**: Interatividade e funcionalidades dinâmicas
 - **Tailwind CSS**: Framework CSS utilitário para design consistente
 - **Font Inter**: Tipografia moderna do Google Fonts
+- **Sistema de Autenticação**: Login/logout com localStorage
+
+## � Sistema de Login e Níveis de Acesso
+
+### Tipos de Usuário Disponíveis
+
+| Tipo | Email | Senha | Dashboard | Descrição |
+|------|-------|-------|-----------|-----------|
+| **Admin** | `admin@lumina.com` | `admin123` | Admin Dashboard | Acesso total ao sistema |
+| **Professor** | `teacher@lumina.com` | `teacher123` | Teacher Dashboard | Gerenciar cursos e estudantes |
+| **Moderador** | `moderator@lumina.com` | `moderator123` | Moderator Dashboard | Moderar conteúdo e denúncias |
+| **Estudante** | `student@lumina.com` | `student123` | Student Dashboard | Acessar cursos e exercícios |
+| **Demo** | `demo@lumina.com` | `demo123` | Student Dashboard | Acesso demonstração |
+
+### Funcionalidades de Autenticação
+- ✅ **Login/Logout** seguro com validação
+- ✅ **Registro** de novos usuários
+- ✅ **"Lembrar de mim"** com persistência de sessão
+- ✅ **Redirecionamento automático** baseado no tipo de usuário
+- ✅ **Verificação de permissões** em tempo real
+- ✅ **Proteção de rotas** com controle de acesso
+- ✅ **Dashboards personalizados** por tipo de usuário
+
+### Como Testar o Sistema
+1. Acesse `cliente/login.php`
+2. Use uma das credenciais de teste acima
+3. Observe o redirecionamento automático para o dashboard correto
+4. Teste navegação entre páginas (algumas são restritas por permissão)
+5. Teste logout e login com outro tipo de usuário
 
 ## 📁 Estrutura do Projeto
 
-O projeto foi refatorado para melhorar a manutenção e separação de responsabilidades:
+O projeto foi expandido com sistema de autenticação e múltiplos dashboards:
 
 ```
 Lumina Academy/
-├── index.html              # Landing page da plataforma
-├── dashboard.html          # Dashboard do estudante
-├── exercicios.html         # Página de exercícios
-├── README.md               # Documentação do projeto
-├── css/
-│   ├── styles.css          # Estilos globais compartilhados
-│   └── index-styles.css    # Estilos específicos da landing page
+├── index.php                    # Landing page da plataforma
+├── README.md                   # Documentação do projeto
+├── SISTEMA_LOGIN_DOCUMENTACAO.md # Documentação do sistema de login
+├── cliente/                    # Área logada da plataforma
+│   ├── login.php              # Página de login/registro
+│   ├── dashboard.php          # Dashboard de estudantes
+│   ├── admin-dashboard.php    # Dashboard de administradores
+│   ├── teacher-dashboard.php  # Dashboard de professores
+│   ├── moderator-dashboard.php # Dashboard de moderadores
+│   ├── exercicios.php         # Página de exercícios (protegida)
+│   ├── materias.php           # Página de matérias (protegida)
+│   ├── desempenho.php         # Página de desempenho (protegida)
+│   ├── cronograma.php         # Página de cronograma (protegida)
+│   ├── suporte.php            # Página de suporte (protegida)
+│   ├── css/
+│   │   ├── styles.css         # Estilos globais compartilhados
+│   │   └── login.css          # Estilos específicos do login
+│   └── js/
+│       ├── main.js            # JavaScript principal global
+│       ├── login.js           # Lógica de autenticação
+│       ├── data.js            # Dados e configurações
+│       ├── utils.js           # Funções utilitárias
+│       ├── sidebar-components.js # Componentes da sidebar
+│       ├── color-system.js    # Sistema de cores
+│       └── tailwind-config.js # Configurações do Tailwind
 └── js/
-    ├── main.js             # JavaScript principal global
-    ├── index-scripts.js    # Scripts específicos da landing page
-    ├── data.js             # Dados e configurações
-    ├── utils.js            # Funções utilitárias
-    ├── sidebar-components.js # Componentes da sidebar
-    ├── color-system.js     # Sistema de cores
-    └── tailwind-config.js  # Configurações do Tailwind
+    └── auth-check.js          # Funções de verificação de autenticação
 ```
 
 ## 🎨 Principais Recursos
 
-### Landing Page (index.html)
+### Sistema de Autenticação
+- **Página de Login** (`cliente/login.php`): Interface moderna com alternância login/registro
+- **Múltiplos Dashboards**: Interfaces personalizadas por tipo de usuário
+- **Verificação de Permissões**: Controle granular de acesso a funcionalidades
+- **Sessão Persistente**: "Lembrar de mim" funcional
+- **Segurança**: Tokens de sessão com expiração
+
+### Landing Page (index.php)
 - **Hero Section**: Apresentação impactante com call-to-action
 - **Seção de Matérias**: Cards interativos com progresso visual
 - **Planos de Estudo**: Comparação de planos com preços
@@ -45,9 +96,31 @@ Lumina Academy/
 - **Depoimentos**: Feedback de estudantes aprovados
 - **Contato**: Formulário funcional para contato
 
-### Dashboard (dashboard.html)
+### Dashboards Especializados
+
+#### Dashboard do Administrador
+- **Gestão de Usuários**: Controle total de contas
+- **Analytics Avançado**: Métricas da plataforma
+- **Configurações do Sistema**: Controles administrativos
+- **Relatórios**: Dados detalhados de uso
+
+#### Dashboard do Professor
+- **Gestão de Cursos**: Criar e editar conteúdo
+- **Acompanhamento de Alunos**: Progresso individualizado
+- **Materiais Didáticos**: Upload e organização
+- **Avaliações**: Criação de exercícios e simulados
+
+#### Dashboard do Moderador
+- **Moderação de Conteúdo**: Aprovação/rejeição
+- **Gestão de Denúncias**: Resolução de problemas
+- **Controle de Comentários**: Moderação de interações
+- **Relatórios de Atividade**: Logs de moderação
+
+#### Dashboard do Estudante
 - **Painel personalizado** com progresso visual
 - **Estatísticas** de desempenho em tempo real
+- **Tarefas e cronograma** adaptativo
+- **Navegação lateral** com componentes modulares
 - **Tarefas e cronograma** adaptativo
 - **Navegação lateral** com componentes modulares
 
@@ -147,11 +220,20 @@ O sistema utiliza uma paleta de cores moderna e acessível:
 
 ## 🚀 Como Executar
 
-1. **Clone ou baixe o projeto**
-2. **Abra o index.html** em um navegador moderno
-3. **Para desenvolvimento**: Use um servidor local (Live Server, XAMPP, etc.)
+### Requisitos
+- Servidor web local (Apache, Nginx, ou similar)
+- PHP (opcional, mas recomendado para funcionalidade completa)
 
-### Servidores Locais Recomendados
+### Opção 1: XAMPP (Recomendado)
+1. **Instale o XAMPP** se ainda não tiver
+2. **Copie o projeto** para `C:\xampp\htdocs\Lumina_Academy`
+3. **Inicie o Apache** no painel do XAMPP
+4. **Acesse** `http://localhost/Lumina_Academy` no navegador
+
+### Opção 2: Servidor Simples
+1. **Clone ou baixe o projeto**
+2. **Use um servidor local**:
+
 ```bash
 # Python
 python -m http.server 8000
@@ -160,8 +242,19 @@ python -m http.server 8000
 npx http-server
 
 # VS Code Live Server Extension
-# Clique com botão direito no index.html > "Open with Live Server"
+# Clique com botão direito no index.php > "Open with Live Server"
 ```
+
+3. **Acesse** o projeto no navegador
+
+### Testando o Sistema de Login
+1. Vá para `cliente/login.php`
+2. Use as credenciais de teste:
+   - **Admin**: admin@lumina.com / admin123
+   - **Professor**: teacher@lumina.com / teacher123
+   - **Moderador**: moderator@lumina.com / moderator123
+   - **Estudante**: student@lumina.com / student123
+   - **Demo**: demo@lumina.com / demo123
 
 ## 🎯 Melhorias Implementadas
 

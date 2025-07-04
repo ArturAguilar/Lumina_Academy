@@ -18,7 +18,7 @@
             <div class="flex flex-col w-64 bg-white border-r border-gray-200">
                 <!-- Logo -->
                 <div class="flex items-center px-6 py-4">
-                    <a href="../index.html" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
+                    <a href="../index.php" class="flex items-center space-x-3 hover:opacity-80 transition-opacity">
                         <div class="p-2 rounded-lg">
                             <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563eb"/>
@@ -48,7 +48,7 @@
                 <!-- Navigation Menu -->
                 <div class="flex-1 px-4 py-4">
                     <nav class="space-y-1">
-                        <a href="dashboard.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="dashboard.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                             </svg>
@@ -60,25 +60,25 @@
                             </svg>
                             Matérias
                         </a>
-                        <a href="exercicios.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="exercicios.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
                             </svg>
                             Exercícios
                         </a>
-                        <a href="cronograma.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="cronograma.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                             </svg>
                             Cronograma
                         </a>
-                        <a href="desempenho.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="desempenho.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                             Desempenho
                         </a>
-                        <a href="suporte.html" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
+                        <a href="suporte.php" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-lg">
                             <svg class="text-gray-400 mr-3 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
                             </svg>
@@ -565,6 +565,46 @@
             </main>
         </div>
     </div>
+
+    <!-- Auth Check -->
+    <script src="../js/auth-check.js"></script>
+    <script>
+        // Verificar autenticação na página de matérias
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!isUserLoggedIn()) {
+                alert('Você precisa estar logado para acessar as matérias.');
+                window.location.href = 'login.php';
+                return;
+            }
+            
+            // Verificar se tem permissão para acessar matérias
+            if (!hasPermission('access_subjects')) {
+                alert('Você não tem permissão para acessar esta área.');
+                window.location.href = 'dashboard.php';
+                return;
+            }
+            
+            // Atualizar interface com dados do usuário
+            const user = getCurrentUser();
+            if (user) {
+                document.querySelectorAll('.user-name').forEach(element => {
+                    element.textContent = user.name;
+                });
+                
+                document.querySelectorAll('.user-avatar').forEach(element => {
+                    element.textContent = user.name.charAt(0).toUpperCase();
+                });
+                
+                // Atualizar nome nas informações do perfil
+                const profileNameElement = document.querySelector('.flex.items-center.space-x-3 p:first-child');
+                if (profileNameElement) {
+                    profileNameElement.textContent = user.name;
+                }
+                
+                console.log('📖 Matérias carregadas para:', user.name);
+            }
+        });
+    </script>
 
     <script src="js/main.js"></script>
 </body>
