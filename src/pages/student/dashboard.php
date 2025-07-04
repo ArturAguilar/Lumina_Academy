@@ -861,39 +861,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Simular processo de logout
             setTimeout(() => {
                 try {
-                    // Limpar dados de sessão do localStorage
-                    const keysToRemove = [
-                        'lumina_user_data',
-                        'lumina_auth_token', 
-                        'lumina_remember_login',
-                        'lumina_last_login',
-                        'lumina_user_preferences',
-                        'lumina_form_data',
-                        'lumina_activity_log'
-                    ];
-                    
-                    keysToRemove.forEach(key => {
-                        localStorage.removeItem(key);
-                    });
-                    
-                    // Limpar tentativas de login falhadas
-                    Object.keys(localStorage).forEach(key => {
-                        if (key.startsWith('failed_attempts_')) {
-                            localStorage.removeItem(key);
-                        }
-                    });
-                    
-                    // Registrar logout no console
-                    console.log('🚪 Logout realizado com sucesso');
-                    
-                    // Mostrar notificação de sucesso
-                    showLogoutNotification('Logout realizado com sucesso. Até logo!', 'success');
-                    
-                    // Redirecionar para página de login
-                    setTimeout(() => {
-                        window.location.href = 'login.php';
-                    }, 1000);
-                    
+                    // Usar a função de logout do sistema de autenticação
+                    if (typeof window.performLogout === 'function') {
+                        window.performLogout();
+                    } else {
+                        // Fallback: limpar dados manualmente
+                        localStorage.removeItem('lumina_user_data');
+                        localStorage.removeItem('lumina_auth_token');
+                        localStorage.removeItem('lumina_remember_login');
+                        
+                        console.log('🚪 Logout realizado com sucesso');
+                        showLogoutNotification('Logout realizado com sucesso. Até logo!', 'success');
+                        
+                        setTimeout(() => {
+                            window.location.href = 'login.php';
+                        }, 1000);
+                    }
                 } catch (error) {
                     console.error('Erro durante logout:', error);
                     
@@ -951,39 +934,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ========================================
-    // VERIFICAÇÃO DE AUTENTICAÇÃO
-    // ========================================
-    
-    function checkAuthentication() {
-        const userData = localStorage.getItem('lumina_user_data');
-        const authToken = localStorage.getItem('lumina_auth_token');
-        
-        if (!userData || !authToken) {
-            console.log('⚠️ Usuário não autenticado, redirecionando...');
-            window.location.href = 'login.php';
-            return false;
-        }
-        
-        try {
-            const tokenData = JSON.parse(authToken);
-            if (Date.now() > tokenData.expires) {
-                console.log('⚠️ Token expirado, redirecionando...');
-                performLogout();
-                return false;
-            }
-        } catch (error) {
-            console.error('Erro ao verificar token:', error);
-            window.location.href = 'login.php';
-            return false;
-        }
-        
-        return true;
-    }
-    
-    // Executar verificação de autenticação
-    checkAuthentication();
-    
-    // ========================================
     // CARREGAR DADOS DO USUÁRIO
     // ========================================
     
@@ -996,7 +946,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Atualizar nome do usuário
                 const userNameElements = document.querySelectorAll('.user-name');
                 userNameElements.forEach(element => {
-                    element.textContent = `${user.firstName} ${user.lastName}`;
+                    element.textContent = user.name || `${user.firstName} ${user.lastName}`;
                 });
                 
                 // Atualizar email
@@ -1008,10 +958,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Atualizar iniciais do avatar
                 const avatarElements = document.querySelectorAll('.user-avatar');
                 avatarElements.forEach(element => {
-                    element.textContent = user.firstName.charAt(0).toUpperCase();
+                    const firstLetter = user.name ? user.name.charAt(0) : user.firstName.charAt(0);
+                    element.textContent = firstLetter.toUpperCase();
                 });
                 
-                console.log('✅ Dados do usuário carregados:', user.firstName);
+                console.log('✅ Dados do usuário carregados:', user.name || user.firstName);
             }
         } catch (error) {
             console.error('Erro ao carregar dados do usuário:', error);
@@ -1023,106 +974,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Auth Check and User Management -->
-<script src="../js/auth-check.js"></script>
-<script>
-    // Verificar se o usuário está autenticado e é estudante
-    document.addEventListener('DOMContentLoaded', function() {
-        if (!isUserLoggedIn()) {
-            window.location.href = 'login.php';
-            return;
-        }
-        
-        const user = getCurrentUser();
-        if (!user) {
-            window.location.href = 'login.php';
-            return;
-        }
-        
-        // Verificar se é estudante ou demo (ambos podem acessar o dashboard principal)
-        if (!hasPermission('access_student_dashboard')) {
-            // Se não for estudante, redirecionar para o dashboard apropriado
-            if (user.role === 'admin') {
-                window.location.href = 'admin-dashboard.php';
-            } else if (user.role === 'teacher') {
-                window.location.href = 'teacher-dashboard.php';
-            } else if (user.role === 'moderator') {
-                window.location.href = 'moderator-dashboard.php';
-            } else {
-                alert('Acesso negado. Você não tem permissão para acessar esta área.');
-                window.location.href = 'login.php';
-            }
-            return;
-        }
-        
-        // Atualizar interface com dados do usuário
-        updateStudentInterface();
-        
-        console.log('👋 Bem-vindo ao Dashboard do Estudante!');
-        console.log('📚 Usuário:', user.name, '| Role:', user.role);
-        console.log('✅ Permissões:', user.permissions);
-    });
-    
-    function updateStudentInterface() {
-        const user = getCurrentUser();
-        if (!user) return;
-        
-        // Atualizar nome do usuário
-        document.querySelectorAll('.user-name').forEach(element => {
-            element.textContent = user.name;
-        });
-        
-        // Atualizar email (se existir elemento)
-        document.querySelectorAll('.user-email').forEach(element => {
-            element.textContent = user.email;
-        });
-        
-        // Atualizar avatar
-        document.querySelectorAll('.user-avatar').forEach(element => {
-            element.textContent = user.name.charAt(0).toUpperCase();
-        });
-        
-        // Personalizar saudação baseada no horário
-        const hour = new Date().getHours();
-        let greeting = 'Olá';
-        if (hour < 12) {
-            greeting = 'Bom dia';
-        } else if (hour < 18) {
-            greeting = 'Boa tarde';
-        } else {
-            greeting = 'Boa noite';
-        }
-        
-        const greetingElement = document.querySelector('h1');
-        if (greetingElement) {
-            greetingElement.innerHTML = `${greeting}, <span class="user-name">${user.name}</span>!`;
-        }
-        
-        // Mostrar indicador de tipo de usuário
-        if (user.role === 'demo') {
-            const userTypeElements = document.querySelectorAll('p:contains("Plano Premium")');
-            userTypeElements.forEach(element => {
-                if (element.textContent.includes('Plano Premium')) {
-                    element.textContent = 'Conta Demo';
-                    element.className = element.className.replace('text-primary', 'text-orange-600');
-                    element.className = element.className.replace('bg-primary', 'bg-orange-100');
-                }
-            });
-        }
-    }
-    
-    // Função personalizada de logout para estudantes
-    function studentLogout() {
-        if (confirm('Tem certeza que deseja sair?')) {
-            localStorage.removeItem('currentUser');
-            console.log('👋 Logout do estudante realizado');
-            window.location.href = 'login.php';
-        }
-    }
-    
-    // Substituir a função de logout padrão
-    window.performLogout = studentLogout;
-</script>
+<!-- Dashboard Authentication System -->
+<script src="js/dashboard-auth.js"></script>
 
 <script src="js/utils.js"></script>
 <script src="js/data.js"></script>

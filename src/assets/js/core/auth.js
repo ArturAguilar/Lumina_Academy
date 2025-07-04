@@ -760,10 +760,8 @@ function handleLoginSuccess(user, remember, email) {
                 window.location.href = 'admin-dashboard.php';
             } else if (userData.role === 'teacher') {
                 window.location.href = 'teacher-dashboard.php';
-            } else if (userData.role === 'moderator') {
-                window.location.href = 'moderator-dashboard.php';
             } else {
-                // student, demo ou outros
+                // student ou outros
                 window.location.href = 'dashboard.php';
             }
         }
@@ -906,6 +904,7 @@ function setupRegisterForm() {
     const registerFirstname = document.getElementById('register-firstname');
     const registerLastname = document.getElementById('register-lastname');
     const registerEmail = document.getElementById('register-email');
+    const registerUserType = document.getElementById('register-user-type');
     const registerPassword = document.getElementById('register-password');
     const registerConfirmPassword = document.getElementById('register-confirm-password');
     const termsCheckbox = document.getElementById('terms');
@@ -913,6 +912,7 @@ function setupRegisterForm() {
     const registerFirstnameError = document.getElementById('register-firstname-error');
     const registerLastnameError = document.getElementById('register-lastname-error');
     const registerEmailError = document.getElementById('register-email-error');
+    const registerUserTypeError = document.getElementById('register-user-type-error');
     const registerPasswordError = document.getElementById('register-password-error');
     const registerConfirmPasswordError = document.getElementById('register-confirm-password-error');
     const termsError = document.getElementById('terms-error');
@@ -926,6 +926,7 @@ function setupRegisterForm() {
         registerFirstnameError?.classList.add('hidden');
         registerLastnameError?.classList.add('hidden');
         registerEmailError?.classList.add('hidden');
+        registerUserTypeError?.classList.add('hidden');
         registerPasswordError?.classList.add('hidden');
         registerConfirmPasswordError?.classList.add('hidden');
         termsError?.classList.add('hidden');
@@ -933,6 +934,7 @@ function setupRegisterForm() {
         registerFirstname?.classList.remove('border-error');
         registerLastname?.classList.remove('border-error');
         registerEmail?.classList.remove('border-error');
+        registerUserType?.classList.remove('border-error');
         registerPassword?.classList.remove('border-error');
         registerConfirmPassword?.classList.remove('border-error');
         
@@ -957,6 +959,14 @@ function setupRegisterForm() {
             registerEmailError?.classList.remove('hidden');
             registerEmail?.classList.add('border-error', 'error-shake');
             setTimeout(() => registerEmail?.classList.remove('error-shake'), 500);
+            isValid = false;
+        }
+        
+        // Validate user type
+        if (!registerUserType.value || !['student', 'teacher'].includes(registerUserType.value)) {
+            registerUserTypeError?.classList.remove('hidden');
+            registerUserType?.classList.add('border-error', 'error-shake');
+            setTimeout(() => registerUserType?.classList.remove('error-shake'), 500);
             isValid = false;
         }
         
@@ -988,6 +998,7 @@ function setupRegisterForm() {
                 registerFirstname.value.trim(),
                 registerLastname.value.trim(),
                 registerEmail.value,
+                registerUserType.value,
                 registerPassword.value
             );
         }
@@ -995,12 +1006,12 @@ function setupRegisterForm() {
 }
 
 // Função para processar registro
-function processRegister(firstName, lastName, email, password) {
+function processRegister(firstName, lastName, email, userType, password) {
     const registerButton = document.getElementById('registerButton');
     showLoading(registerButton);
     
     // Registrar tentativa de cadastro
-    StorageManager.logActivity('register_attempt', 'Tentativa de cadastro', { email, firstName, lastName });
+    StorageManager.logActivity('register_attempt', 'Tentativa de cadastro', { email, firstName, lastName, userType });
     
     // Simular processo de registro
     setTimeout(() => {
@@ -1034,8 +1045,8 @@ function processRegister(firstName, lastName, email, password) {
             joinDate: new Date().toISOString(),
             lastLogin: new Date().toISOString(),
             loginCount: 1,
-            role: 'student', // Por padrão, novos usuários são estudantes
-            permissions: getUserPermissions('student'), // Adicionar permissões padrão
+            role: userType, // Usar o tipo selecionado pelo usuário
+            permissions: getUserPermissions(userType), // Adicionar permissões baseadas no tipo
             preferences: {
                 theme: 'light',
                 notifications: true,
@@ -1070,6 +1081,7 @@ function processRegister(firstName, lastName, email, password) {
             email, 
             firstName, 
             lastName,
+            userType,
             userId: userData.id
         });
         
@@ -1089,10 +1101,8 @@ function processRegister(firstName, lastName, email, password) {
                     window.location.href = 'admin-dashboard.php';
                 } else if (userData.role === 'teacher') {
                     window.location.href = 'teacher-dashboard.php';
-                } else if (userData.role === 'moderator') {
-                    window.location.href = 'moderator-dashboard.php';
                 } else {
-                    // student, demo ou outros
+                    // student ou outros
                     window.location.href = 'dashboard.php';
                 }
             }
@@ -1610,18 +1620,6 @@ function getUserPermissions(role) {
             dashboardType: 'teacher',
             displayName: 'Professor'
         },
-        moderator: {
-            canViewAllUsers: true,
-            canManageUsers: false,
-            canManageCourses: false,
-            canViewAnalytics: false,
-            canManageSystem: false,
-            canModerateContent: true,
-            canAccessFinancial: false,
-            canManageRoles: false,
-            dashboardType: 'moderator',
-            displayName: 'Moderador'
-        },
         student: {
             canViewAllUsers: false,
             canManageUsers: false,
@@ -1997,10 +1995,8 @@ function showNotification(message, type = 'info', duration = 4000) {
                 window.location.href = 'admin-dashboard.php';
             } else if (userData.role === 'teacher') {
                 window.location.href = 'teacher-dashboard.php';
-            } else if (userData.role === 'moderator') {
-                window.location.href = 'moderator-dashboard.php';
             } else {
-                // student, demo ou outros
+                // student ou outros
                 window.location.href = 'dashboard.php';
             }
         }

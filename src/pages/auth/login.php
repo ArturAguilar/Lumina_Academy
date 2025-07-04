@@ -184,6 +184,16 @@
                         </div>
                         
                         <div>
+                            <label for="register-user-type" class="block text-sm font-medium text-textSecondary mb-1">Tipo de usuário</label>
+                            <select id="register-user-type" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none">
+                                <option value="">Selecione seu tipo de usuário</option>
+                                <option value="student">Aluno</option>
+                                <option value="teacher">Professor</option>
+                            </select>
+                            <p id="register-user-type-error" class="hidden text-error text-sm mt-1">Por favor, selecione seu tipo de usuário.</p>
+                        </div>
+                        
+                        <div>
                             <label for="register-password" class="block text-sm font-medium text-textSecondary mb-1">Senha</label>
                             <input type="password" id="register-password" class="input-field w-full px-4 py-3 rounded-lg border border-neutral focus:outline-none" placeholder="••••••••">
                             <!-- Indicador de força da senha -->
